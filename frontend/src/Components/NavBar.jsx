@@ -21,13 +21,22 @@ const useStyles = makeStyles(theme =>({
   res_name:{
       fontSize:'2.5rem',
       fontWeight:'bolder',
-      color:theme.palette.primary.dark
+      color:theme.palette.primary.dark,
+      [theme.breakpoints.down('sm')]:{
+        fontSize:'1.7rem',
+        marginRight:theme.spacing(5)
+    }
+        
+
   },
  
   res_logo:{
       color:theme.palette.secondary.main,
       fontSize:'2.5rem',
-  },
+    [theme.breakpoints.down('sm')]:{
+        fontSize:'1.7rem',
+        marginLeft:theme.spacing(0.2)
+  }},
   header_btn:{
       fontSize:'1.rem',
        [theme.breakpoints.down('sm')]:{
@@ -65,8 +74,12 @@ const useStyles = makeStyles(theme =>({
       '&:hover':{
           color:'#fff',
           background:theme.palette.secondary.main,
+            
         //   transform:'rotate(360deg)'
-      }
+      },
+      [theme.breakpoints.down('sm')]:{
+             padding: theme.spacing(0.8),
+            }
   },
   //---------responsive design
   header_options1:{
@@ -93,9 +106,14 @@ const useStyles = makeStyles(theme =>({
    header_homebtn:{
        margin:theme.spacing(1),
        paddingRight:'750px',
+   },
+   cancel:{
+    display:'none',
+    [theme.breakpoints.down('sm')]:{
+         display:'flex'
    }
 
-
+   }
 
 
 
@@ -140,10 +158,12 @@ export default function NavBar() {
           
 
           <div className="header_left"   >
-              <IconButton className={classes.iconbutton} sx={{ mr: 2 }}>   <Menu onClick={() => (setstate(true))} className={classsNames(classes.header__right__options, classes.iconbutton_menu)} /></IconButton> 
-            <IconButton className={classes.iconbutton} sx={{ mr: 2 }}>    <Cancel className={classes.header__right__options}  onClick={() => setstate(false)}/></IconButton> 
-              
-              <IconButton  className={classes.iconbutton} sx={{ mr: 2 }}>   <Search className={classes.header__right__options} /></IconButton> 
+              <IconButton className={classes.iconbutton} sx={{ mr: 2 }}>  
+                 <Menu onClick={() => (setstate(true))} className={classsNames(classes.header__right__options, classes.iconbutton_menu)} />
+                <Cancel onClick={() => (setstate(false))} className={classsNames(classes.cancel, classes.header__right__options)}  />
+              </IconButton> 
+            {/* <IconButton className={classes.iconbutton} sx={{ mr: 2 }}>    <Cancel onClick={() => (setstate(false))} className={classsNames(classes.cancel, classes.header__right__options)}  onClick={() => setstate(false)}/></IconButton>  */}
+            <IconButton  className={classes.iconbutton} sx={{ mr: 2 }}>   <Search className={classes.header__right__options} /></IconButton> 
               <IconButton  className={classes.iconbutton} sx={{ mr: 2 }}>   <Favorite className={classes.header__right__options} /> </IconButton> 
               <IconButton  className={classes.iconbutton} sx={{ mr: 2 }}>   <ShoppingCart className={classes.header__right__options} /></IconButton> 
           </div>
